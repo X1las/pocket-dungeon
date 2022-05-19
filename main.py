@@ -2,6 +2,7 @@ from main_classes.item import Item
 from main_classes.game import Game
 from main_classes.level import Level
 
+
 g = Game()
 l1 = Level(g)
 

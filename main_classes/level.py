@@ -1,4 +1,5 @@
-from game import Game
+from main_classes.game import Game
+
 
 class Level:
     

@@ -1,6 +1,6 @@
 from commons import typeCheck,gameMessage
-from game import Game
-from level import Level
+from main_classes.game import Game
+from main_classes.level import Level
 
 class Item:
 
