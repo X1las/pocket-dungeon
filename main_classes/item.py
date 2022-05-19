@@ -1,4 +1,6 @@
-from commons import typeCheck
+from commons import typeCheck,gameMessage
+from game import Game
+from level import Level
 
 class Item:
 
@@ -10,21 +12,23 @@ class Item:
     contains = []
     resources = []
 
-    # Constructor, uses the game object itself for initialization
+    # Constructor, requires both a game AND level object to be created.
     def __init__(
         self, 
-        game, 
+        game:Game, 
+        level:Level,
         type:str, 
         parent = None, 
         name:str = "Newt",
         position:int = [0,0], 
-        color:int = None):
+        color:int = [0,0,0]):
         
         # Instanced Variables
         self.parent = parent
         self.name = name
         self.game = game
         self.color = color
+        self.level = level
         
         self.typeChange(type) # See function further down for more info
         
@@ -33,7 +37,7 @@ class Item:
             self.localpos = position
             self.position = self.parent.position + position
             self.parent.contains.append(self)
-            self.gameMessage("LOG",self.name + " has been made child of object " + self.parent.name)
+            gameMessage(self.game,"LOG",self.name + " has been made child of object " + self.parent.name)
         else:
             self.position = position
     
@@ -49,11 +53,7 @@ class Item:
         if typeCheck(type):
             self.type = type
         else:
-            self.gameMessage("ERR","Cannot change type of object to '" + type)
-
-    # Sends a message to the game object of a certain message type
-    def gameMessage(self, msgType:str, msg:str):
-        self.game.messages.append(msg + ">" + msgType)
+            gameMessage(self.game,"ERR","Cannot change type of object to '" + type)
     
     def resourceGenerate():
         
