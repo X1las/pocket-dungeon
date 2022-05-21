@@ -6,7 +6,7 @@ from main_classes.level import Level
 g = Game()
 l1 = Level(g)
 
-player = Item(game = g, level = l1, type = "PLAYER", name = "DoDo")
+player = Item(game = g, level = l1, type = "PLAYER", name = "jkhjhlk")
 
 hat = Item(game = g, level = l1, type = "HAT", name = "Tattered Cowl", parent = player)
 gloves = Item(game = g, level = l1, type = "GLOVE", name = "Worm Glove", parent = player)
