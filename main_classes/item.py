@@ -1,6 +1,6 @@
 from main_classes.game import Game
 from main_classes.level import Level
-from settings import ITEMTYPES
+from data.preferences import ITEMTYPES
 
 class Item:
 
@@ -15,13 +15,14 @@ class Item:
     # Constructor, requires both a game AND level object to be created.
     def __init__(
         self, 
-        game:Game, 
+        game:Game,
         level:Level,
         type:str, 
         parent = None, 
         name:str = "Newt",
         position:int = [0,0], 
-        color:int = [0,0,0]):
+        color:int = [0,0,0], 
+        generate:bool = True):
         
         # Instanced Variables
         self.game = game

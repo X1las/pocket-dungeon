@@ -1,5 +1,5 @@
 from main_classes.game import Game
-from settings import EXPANSION, LEVEL_SIZE
+from data.preferences import EXPANSION, LEVEL_SIZE
 
 
 class Level:

@@ -1,4 +1,4 @@
-from settings import RESOLUTION,FAILSAFE_TIME
+from data.preferences import RESOLUTION,FAILSAFE_TIME
 
 
 class Game:
