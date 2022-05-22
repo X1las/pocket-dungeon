@@ -1,5 +1,4 @@
 from main_classes.game import Game
-from main_classes.room import Room
 from settings import EXPANSION, LEVEL_SIZE
 
 

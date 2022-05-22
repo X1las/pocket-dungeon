@@ -1,4 +1,5 @@
-from level import Level
+from main_classes.level import Level
+
 
 class Room:
 

@@ -37,7 +37,7 @@ class Item:
             self.localpos = position
             self.position = self.parent.position + position
             self.parent.contains.append(self)
-            gameMessage(self.game,"LOG",self.name + " has been made child of object " + self.parent.name)
+            self.game.sendMessage("LOG",self.name + " has been made child of object " + self.parent.name, self)
         else:
             self.position = position
     
