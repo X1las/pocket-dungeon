@@ -1,6 +1,6 @@
-from commons import typeCheck,gameMessage
 from main_classes.game import Game
 from main_classes.level import Level
+from settings import ITEMTYPES
 
 class Item:
 
@@ -24,15 +24,15 @@ class Item:
         color:int = [0,0,0]):
         
         # Instanced Variables
+        self.game = game
+        self.level = level
         self.parent = parent
         self.name = name
-        self.game = game
         self.color = color
-        self.level = level
         
         self.typeChange(type) # See function further down for more info
         
-        # Checks if the item has a parent, and adds itself to the parent's list of containables if it has
+        # Checks if the item has a parent, and adds itself to the parent's list of containables if it has and creates local positions for itself
         if self.parent:
             self.localpos = position
             self.position = self.parent.position + position
@@ -50,10 +50,13 @@ class Item:
     
     # Changes the type of the item to one listen in settings.py, or sends an error
     def typeChange(self, type: str):
-        if typeCheck(type):
+        try:
+            self.populationMax = ITEMTYPES[type]
             self.type = type
-        else:
-            gameMessage(self.game,"ERR","Cannot change type of object to '" + type)
+        except:
+            self.game.sendMessage("ERR","Cannot change type of object to '" + type,self)
+            self.type = None
+        
     
     def resourceGenerate():
         

@@ -1,10 +1,12 @@
 from main_classes.game import Game
+from main_classes.room import Room
+from settings import EXPANSION, LEVEL_SIZE
 
 
 class Level:
+    Rooms = None
     
-    rooms = None
-    
+    # Level Initializer, requires a Game object to function
     def __init__(self, game:Game, levelType:str = None, stage:int = 0, generate:bool = True):
         
         self.game = game
@@ -14,11 +16,12 @@ class Level:
         if generate:
             self.generateLevel()
     
-    # Function that generates the level
+    # Function that generates rooms for the level
     def generateLevel(self):
-        rooms = self.rooms
+        diff = EXPANSION
+        roomstemp = LEVEL_SIZE
     
-    # Function that iterates the level
+    # Function that iterates the level to the next
     def nextLevel(self):
         self.rooms = None
         self.progress+=1

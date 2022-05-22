@@ -1,21 +1,20 @@
+# Game Options:
 RESOLUTION = [1000,700]
-TYPES = [
-    "PLAYER",   
-    "ENEMY",    
-    "GLOVE",    
-    "HAT",  
-    "BOOT", 
-    "SHIELD",
-    "SWORD",    
-    "STAFF"]
-TYPELIMITS= [
-    22000,      
-    14000,      
-    1500,       
-    3000,   
-    2000,   
-    3500,
-    4500,      
-    4500] 
 FAILSAFE_TIME = 50000
-EXPANSION = 1.2
+
+# Item Options:
+# Itemtypes with corresponding population limits
+ITEMTYPES = {
+    "PLAYER"    : 22000,   
+    "ENEMY"     : 14000,   
+    "GLOVE"     : 1500,   
+    "HAT"       : 3000,
+    "BOOT"      : 2000,
+    "SHIELD"    : 3500,
+    "SWORD"     : 4500,
+    "STAFF"     : 4500
+}
+
+# Level Options:
+EXPANSION = 1.05
+LEVEL_SIZE = 20

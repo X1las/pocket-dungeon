@@ -4,14 +4,12 @@ from settings import RESOLUTION,FAILSAFE_TIME
 class Game:
     
     resolution = RESOLUTION
-    contains = []
-    messages = []
-    uptime = 0
-    running = None
-    failsafe = None
     
-    def __init__(self, running = False, failsafe = True):
+    def __init__(self, running:bool = False, failsafe:bool = True, contains = [], uptime:int = 0):
+        
         self.running = running
+        self.contains = contains
+        self.uptime = uptime
         
         if failsafe:
             self.failsafe = FAILSAFE_TIME
@@ -26,7 +24,6 @@ class Game:
         while self.running:
                 
             self.uptime += 1
-            self.resolveMessages()
             
             if start:
                 print("Game is Running!")
@@ -39,15 +36,16 @@ class Game:
                 if self.uptime == self.failsafe:
                     print("failsafe enabled...")
                     self.running = False
+    
+    def sendMessage(self, type:str, message:str, sender = None):
+        objectfrom = ""
+        if sender:
+            objectfrom = sender
+        if type == "ERR":
+            print("Error: " + message + " from " + objectfrom.name)
+        elif type == "LOG":
+            print("Logging: " + message + " from " + objectfrom.name)
+        else:
+            print("Error: Trying to log incorrectly" )
         
-                
-    def resolveMessages(self):
-        if len(self.messages) != 0:
-            for i in self.messages:
-                obs = i.split(">")
-                if obs[1] == "ERR":
-                    print("ERROR: " + obs[0])
-                if obs[1] == "LOG":
-                    print("Logging: " + obs[0])
-            self.messages = []
                 
