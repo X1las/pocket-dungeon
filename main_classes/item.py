@@ -1,6 +1,6 @@
 from main_classes.game import Game
 from main_classes.level import Level
-from data.preferences import ITEMTYPES
+from data._preferences import ITEMTYPES
 
 class Item:
 
