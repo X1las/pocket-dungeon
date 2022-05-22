@@ -12,7 +12,8 @@ ITEMTYPES = {
     "BOOT"      : 2000,
     "SHIELD"    : 3500,
     "SWORD"     : 4500,
-    "STAFF"     : 4500
+    "STAFF"     : 4500,
+    "STRUCTURE" : 0
 }
 
 # Level Options:

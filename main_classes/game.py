@@ -40,11 +40,11 @@ class Game:
     def sendMessage(self, type:str, message:str, sender = None):
         objectfrom = ""
         if sender:
-            objectfrom = sender
+            objectfrom = " -- From object: '" + sender.name + "'"
         if type == "ERR":
-            print("Error: " + message + " from " + objectfrom.name)
+            print("Error: " + message + objectfrom)
         elif type == "LOG":
-            print("Logging: " + message + " from " + objectfrom.name)
+            print("Logging: " + message + objectfrom)
         else:
             print("Error: Trying to log incorrectly" )
         
