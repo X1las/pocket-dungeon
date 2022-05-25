@@ -3,7 +3,7 @@ from main_classes.game import Game
 from main_classes.level import Level
 
 
-g = Game()
+g = Game(failsafe = False,running=True)
 l1 = Level(g)
 
 player = Item(game = g, level = l1, type = "PLAYER", name = "jkhjhlk", generate=False)
@@ -17,8 +17,5 @@ shield = Item(game = g, level = l1, type = "SHIELD", name = "Busted Shield", par
 
 enemy = Item(game = g,level = l1, type = "ENEMY", name = "Bob")
 
-
-g.running = True
 g.run()
-
-print("finished!")
+g.stop()

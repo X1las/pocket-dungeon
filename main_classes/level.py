@@ -25,3 +25,6 @@ class Level:
         self.rooms = None
         self.progress+=1
         self.generateLevel()  
+    
+    def update():
+        pass

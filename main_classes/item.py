@@ -61,9 +61,9 @@ class Item:
             self.type = type
         except:
             self.game.sendMessage("ERR","Cannot change type of object to '" + type + "', assigning it to NONE",self)
-            self.type = None
-        
+            self.type = None   
     
+    # Generates random resources for the item
     def resourceGenerate(self):
         pass
     

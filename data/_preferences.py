@@ -1,6 +1,7 @@
 # Game Options:
 RESOLUTION = [1000,700]
 FAILSAFE_TIME = 50000
+GAME_NAME = "Pocket Dungeon"
 
 # Item Options:
 # Itemtypes with corresponding population limits
