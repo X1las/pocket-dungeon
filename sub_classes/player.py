@@ -4,15 +4,20 @@ from main_classes.level import Level
 
 
 class Player(Item):
-    
+
     # Constructor, requires Game and level object
-    def __init__(self,game:Game, level:Level):
+    def __init__(self, game: Game, level: Level):
         self.game = game
         self.level = level
-    
+
+    # Update
+    def update(self):
+        pass
+
+    # Draw
+    def draw():
+        pass
+
     # Player Controller, manages input from the player
     def playerController(self):
-        pass
-    
-    def update(self):
         pass
