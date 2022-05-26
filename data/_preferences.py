@@ -2,7 +2,7 @@
 RESOLUTION = [1400, 800]
 FAILSAFE_TIME = 50000
 GAME_NAME = "Pocket Dungeon"
-BACKGROUND_COLOR = (0,0,0)
+BACKGROUND_COLOR = (0, 0, 0)
 
 # Item Options:
 # Itemtypes with corresponding population limits
@@ -22,7 +22,7 @@ ITEM_SIZE = 1
 # Level Options:
 EXPANSION = 1.05
 LEVEL_SIZE = 20
-TILE_SIZE = 32
+TILE_SIZE = 64
 
 # Room Options:
 ROOM_SIZE = 32

@@ -9,10 +9,7 @@ class Player(Item):
 
     width = PLAYER_SIZE*TILE_SIZE/2
     height = PLAYER_SIZE*TILE_SIZE
-    keys = {"a": 0,
-            "d": 0,
-            "w": 0,
-            "s": 0}
+    keys = {"a": 0, "d": 0, "w": 0, "s": 0}
 
     # Constructor, requires Game and level object
     def __init__(self, game: Game,

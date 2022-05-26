@@ -24,7 +24,7 @@ class Game:
 
     # Game Update Loop
     def update(self):
-        
+
         # For handling pygame events
         for event in pg.event.get():
             # only do something if the event is of type QUIT
