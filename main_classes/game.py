@@ -1,5 +1,5 @@
 import sys
-from data._preferences import RESOLUTION, FAILSAFE_TIME, GAME_NAME
+from data._preferences import RESOLUTION, FAILSAFE_TIME, GAME_NAME, BACKGROUND_COLOR
 import pygame as pg
 
 
@@ -7,6 +7,7 @@ class Game:
 
     # Class Variables
     resolution = RESOLUTION
+    player = None
 
     # Constructor
     def __init__(self, running: bool = False, failsafe: bool = True,
@@ -18,16 +19,44 @@ class Game:
         self.running = running
         self.contains = contains
         self.uptime = uptime
-        self.screen = pg.display.set_mode(RESOLUTION)
         self.failsafe = failsafe
+        self.screen = pg.display.set_mode(RESOLUTION)
 
-    # Update
+    # Game Update Loop
     def update(self):
-        pass
+        
+        # For handling pygame events
+        for event in pg.event.get():
+            # only do something if the event is of type QUIT
+            if event.type == pg.QUIT:
+                # change the value to False, to exit the main loop
+                self.running = False
+
+            if event.type == pg.KEYDOWN:
+                self.player.playerController(event.key)
+
+        # For updating containables
+        for i in self.contains:
+            try:
+                i.update()
+            except:
+                self.sendMessage("ERR",
+                                 "Object does not contain update()")
 
     # Draw
-    def draw():
-        pass
+    def draw(self):
+
+        self.screen.fill(BACKGROUND_COLOR)  # Fills the screen
+
+        # For drawing Containables
+        for i in self.contains:
+            try:
+                i.draw()
+            except:
+                self.sendMessage("ERR",
+                                 "Object does not contain draw()")
+
+        pg.display.flip()  # Updates the display
 
     # Run function, starts the game loop
     def run(self):
@@ -42,6 +71,7 @@ class Game:
 
         if self.running:
 
+            # Main Game Loop
             while self.running:
 
                 self.uptime += 1    # Tallies number of ticks
@@ -52,27 +82,15 @@ class Game:
                     start = False
 
                 # For executing stuff on game objects
-                for i in self.contains:
-                    try:
-                        i.update()
-                        i.draw()
-                    except:
-                        self.sendMessage(
-                            "ERR",
-                            "Object does not contain update() or draw()")
+                self.update()
+                self.draw()
 
                 # For terminating the game if the failsafe is enabled
                 if self.failsafe:
                     if self.uptime == self.failsafe:
-                        print("failsafe enabled...")
+                        self.sendMessage("LOG", "failsafe enabled...")
                         self.running = False
 
-                # For handling pygame events
-                for event in pg.event.get():
-                    # only do something if the event is of type QUIT
-                    if event.type == pg.QUIT:
-                        # change the value to False, to exit the main loop
-                        self.running = False
         else:
             print("'Running' has not been enabled, game will not run")
 

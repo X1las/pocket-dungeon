@@ -23,7 +23,7 @@ class Level:
         pass
 
     # Draw loop
-    def draw():
+    def draw(self):
         pass
 
     # Function that generates rooms for the level

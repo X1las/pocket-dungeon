@@ -3,7 +3,7 @@
 
 from main_classes.game import Game
 from main_classes.level import Level
-from data._preferences import ITEMTYPES
+from data._preferences import ITEMTYPES, ITEM_SIZE
 
 
 class Item:
@@ -15,18 +15,18 @@ class Item:
 
     contains = []
     resources = []
+    size = ITEM_SIZE
 
     # Constructor, requires both a game AND level object to be created.
-    def __init__(
-            self,
-            game: Game,
-            level: Level,
-            type: str,
-            parent=None,
-            name: str = "Newt",
-            position: int = [0, 0],
-            color: int = [0, 0, 0],
-            generate: bool = True):
+    def __init__(self,
+                 game: Game,
+                 level: Level,
+                 type: str,
+                 parent=None,
+                 name: str = "Newt",
+                 position: int = [0, 0],
+                 color: int = [0, 0, 0],
+                 generate: bool = True):
 
         # Instanced Variables
         self.game = game
@@ -36,13 +36,9 @@ class Item:
         self.color = color
         self.typeChange(type)  # See function further down for more info
 
-        if generate:
-            self.resourceGenerate()
-
         # Checks if the item has a parent, and adds itself to containables
         if self.parent:
             self.localpos = position
-            self.position = self.parent.position + position
             self.parent.contains.append(self)
             self.game.sendMessage(
                 "LOG", self.name + " has been made child of object "
@@ -50,12 +46,16 @@ class Item:
         else:
             self.position = position
 
+        if generate:  # Generates resources if passes in the initializer
+            self.resourceGenerate()
+
     # Update loop
     def update(self):
-        pass
+        if self.parent:
+            self.position = self.parent.position + self.localpos
 
     # Draw loop
-    def draw():
+    def draw(self):
         pass
 
     # Function to update an item's'health'

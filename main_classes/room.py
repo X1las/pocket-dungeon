@@ -1,7 +1,11 @@
 from main_classes.level import Level
+from data._preferences import ROOM_SIZE
+
 
 
 class Room:
+
+    size = ROOM_SIZE
 
     def __init__(self, level: Level, type: str = None):
         self.level = level
@@ -14,8 +18,8 @@ class Room:
     def update(self):
         pass
 
-    def draw():
+    def draw(self):
         pass
 
-    def roomGenerate():
+    def roomGenerate(self):
         pass

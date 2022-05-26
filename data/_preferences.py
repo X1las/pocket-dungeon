@@ -1,7 +1,8 @@
 # Game Options:
-RESOLUTION = [1000, 700]
+RESOLUTION = [1400, 800]
 FAILSAFE_TIME = 50000
 GAME_NAME = "Pocket Dungeon"
+BACKGROUND_COLOR = (0,0,0)
 
 # Item Options:
 # Itemtypes with corresponding population limits
@@ -16,7 +17,15 @@ ITEMTYPES = {
     "STAFF": 4500,
     "STRUCTURE": 0
 }
+ITEM_SIZE = 1
 
 # Level Options:
 EXPANSION = 1.05
 LEVEL_SIZE = 20
+TILE_SIZE = 64
+
+# Room Options:
+ROOM_SIZE = 32
+
+# Player Options:
+PLAYER_MOVEMENT = 5
