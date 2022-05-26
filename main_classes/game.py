@@ -32,8 +32,8 @@ class Game:
                 # change the value to False, to exit the main loop
                 self.running = False
 
-            if event.type == pg.KEYDOWN:
-                self.player.playerController(event.key)
+            # Sends the event to Player class for handling
+            self.player.playerController(event)
 
         # For updating containables
         for i in self.contains:

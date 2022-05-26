@@ -1,14 +1,18 @@
 from main_classes.game import Game
 from main_classes.item import Item
 from main_classes.level import Level
-from data._preferences import PLAYER_MOVEMENT
+from data._preferences import PLAYER_MOVEMENT, TILE_SIZE, PLAYER_SIZE
 import pygame as pg
 
 
 class Player(Item):
 
-    width = 32
-    height = 64
+    width = PLAYER_SIZE*TILE_SIZE/2
+    height = PLAYER_SIZE*TILE_SIZE
+    keys = {"a": 0,
+            "d": 0,
+            "w": 0,
+            "s": 0}
 
     # Constructor, requires Game and level object
     def __init__(self, game: Game,
@@ -23,12 +27,13 @@ class Player(Item):
         self.color = color
         self.name = name
         self.game.player = self
-        
+
         self.game.contains.append(self)
 
     # Player Update Loop
     def update(self):
-        pass
+        self.position[0] += (self.keys["a"] + self.keys["d"]) * PLAYER_MOVEMENT
+        self.position[1] += (self.keys["w"] + self.keys["s"]) * PLAYER_MOVEMENT
 
     # Player Draw Loop
     def draw(self):
@@ -41,6 +46,26 @@ class Player(Item):
 
     # Player Controller, manages input from the game
     def playerController(self, input):
-        if input == pg.K_s:
-            self.position[1] += PLAYER_MOVEMENT
-            print("moved!")
+        if input.type == pg.KEYDOWN:
+            if input.key == pg.K_s:
+                self.keys["s"] = 1
+                print("moved!")
+            if input.key == pg.K_w:
+                self.keys["w"] = -1
+                print("moved!")
+            if input.key == pg.K_a:
+                self.keys["a"] = -1
+                print("moved!")
+            if input.key == pg.K_d:
+                self.keys["d"] = 1
+                print("moved!")
+
+        if input.type == pg.KEYUP:
+            if input.key == pg.K_s:
+                self.keys["s"] = 0
+            if input.key == pg.K_w:
+                self.keys["w"] = 0
+            if input.key == pg.K_a:
+                self.keys["a"] = 0
+            if input.key == pg.K_d:
+                self.keys["d"] = 0

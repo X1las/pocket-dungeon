@@ -1,6 +1,7 @@
 from main_classes.item import Item
 from main_classes.game import Game
 from main_classes.level import Level
+from main_classes.room import Room
 from sub_classes.player import Player
 
 
@@ -16,6 +17,7 @@ sword = Item(game=g, level=l1, type="SWORD", name="Rusty Sword", parent=player)
 shield = Item(game=g, level=l1, type="SHIELD",
               name="Busted Shield", parent=player)
 
+room = Room(level=l1)
 
 enemy = Item(game=g, level=l1, type="ENEMY", name="Bob")
 
