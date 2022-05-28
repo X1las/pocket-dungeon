@@ -34,10 +34,10 @@ sword = Item(game=g,
              name="Rusty Sword",
              parent=player)
 
-shield = Item(game=g, 
-              level=l1, 
+shield = Item(game=g,
+              level=l1,
               type="SHIELD",
-              name="Busted Shield", 
+              name="Busted Shield",
               parent=player)
 
 enemy = Item(game=g,

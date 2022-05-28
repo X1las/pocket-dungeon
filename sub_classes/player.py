@@ -1,3 +1,4 @@
+import time as t
 from main_classes.game import Game
 from main_classes.item import Item
 from main_classes.level import Level
@@ -10,6 +11,7 @@ class Player(Item):
     width = PLAYER_SIZE*TILE_SIZE/2
     height = PLAYER_SIZE*TILE_SIZE
     keys = {"a": 0, "d": 0, "w": 0, "s": 0}
+    tstart = t.time()
 
     # Constructor, requires Game and level object
     def __init__(self, game: Game,
@@ -29,8 +31,14 @@ class Player(Item):
 
     # Player Update Loop
     def update(self):
-        self.position[0] += (self.keys["a"] + self.keys["d"]) * PLAYER_MOVEMENT
-        self.position[1] += (self.keys["w"] + self.keys["s"]) * PLAYER_MOVEMENT
+        self.tend = self.tstart
+        self.tstart = t.time()
+        self.tscale = (self.tstart - self.tend) * 60
+
+        print(self.tscale)
+
+        self.position[0] += (self.keys["a"] + self.keys["d"]) * PLAYER_MOVEMENT * self.tscale
+        self.position[1] += (self.keys["w"] + self.keys["s"]) * PLAYER_MOVEMENT * self.tscale
 
     # Player Draw Loop
     def draw(self):
@@ -46,16 +54,12 @@ class Player(Item):
         if input.type == pg.KEYDOWN:
             if input.key == pg.K_s:
                 self.keys["s"] = 1
-                print("moved!")
             if input.key == pg.K_w:
                 self.keys["w"] = -1
-                print("moved!")
             if input.key == pg.K_a:
                 self.keys["a"] = -1
-                print("moved!")
             if input.key == pg.K_d:
                 self.keys["d"] = 1
-                print("moved!")
 
         if input.type == pg.KEYUP:
             if input.key == pg.K_s:

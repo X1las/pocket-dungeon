@@ -11,7 +11,7 @@ class Game:
 
     # Constructor
     def __init__(self, running: bool = False, failsafe: bool = True,
-                 contains=[], uptime: int = 0):
+                 contains=[], uptime: int = 0, name = "Game"):
 
         pg.init()
         pg.display.set_caption(GAME_NAME)
@@ -20,6 +20,7 @@ class Game:
         self.contains = contains
         self.uptime = uptime
         self.failsafe = failsafe
+        self.name = name
         self.screen = pg.display.set_mode(RESOLUTION)
 
     # Game Update Loop
@@ -41,9 +42,10 @@ class Game:
                 i.update()
             except:
                 self.sendMessage("ERR",
-                                 "Object does not contain update()")
+                                 "Object does not contain update()",
+                                 self)
 
-    # Draw
+    # Game Draw Loop
     def draw(self):
 
         self.screen.fill(BACKGROUND_COLOR)  # Fills the screen
