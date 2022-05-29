@@ -8,17 +8,20 @@ class Game:
     # Class Variables
     resolution = RESOLUTION
     player = None
+    uptime: int = 0
 
     # Constructor
-    def __init__(self, running: bool = False, failsafe: bool = True,
-                 contains=[], uptime: int = 0, name = "Game"):
+    def __init__(self,
+                 running: bool = False,
+                 failsafe: bool = True,
+                 contains=[],
+                 name="Game"):
 
         pg.init()
         pg.display.set_caption(GAME_NAME)
 
         self.running = running
         self.contains = contains
-        self.uptime = uptime
         self.failsafe = failsafe
         self.name = name
         self.screen = pg.display.set_mode(RESOLUTION)

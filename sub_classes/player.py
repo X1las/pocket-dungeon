@@ -35,8 +35,6 @@ class Player(Item):
         self.tstart = t.time()
         self.tscale = (self.tstart - self.tend) * 60
 
-        print(self.tscale)
-
         self.position[0] += (self.keys["a"] + self.keys["d"]) * PLAYER_MOVEMENT * self.tscale
         self.position[1] += (self.keys["w"] + self.keys["s"]) * PLAYER_MOVEMENT * self.tscale
 
