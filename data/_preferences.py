@@ -27,6 +27,7 @@ TILE_SIZE = 64
 # Room Options:
 ROOM_SIZE = 32
 ROOM_DEFAULT_COLOR = (40, 50, 40)
+ROOM_SPACING = 2
 
 # Player Options:
 PLAYER_MOVEMENT = 1

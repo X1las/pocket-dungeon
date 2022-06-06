@@ -45,7 +45,5 @@ enemy = Item(game=g,
              type="ENEMY",
              name="Bob")
 
-room = Room(level=l1)
-
 g.run()
 g.stop()

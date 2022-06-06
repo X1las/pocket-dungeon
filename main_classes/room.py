@@ -1,5 +1,4 @@
-from main_classes.level import Level
-from data._preferences import ROOM_SIZE, ROOM_DEFAULT_COLOR, TILE_SIZE
+from data._preferences import ROOM_SIZE, ROOM_DEFAULT_COLOR, TILE_SIZE, ROOM_SPACING
 import pygame as pg
 
 
@@ -9,13 +8,19 @@ class Room:
     color = ROOM_DEFAULT_COLOR
     contains = []
 
-    def __init__(self, level: Level, type: str = "DEFAULT", position=[0, 0]):
+    def __init__(self, level, position: tuple, type: str = "DEFAULT", 
+                 generate=True):
 
         self.level = level
-        self.position = position
+        self.position = (position[0]*ROOM_SIZE*TILE_SIZE+ROOM_SPACING*TILE_SIZE,
+                         position[1]*ROOM_SIZE*TILE_SIZE+ROOM_SPACING*TILE_SIZE)
+        print(self.position)
         self.roomType = "DEFAULT"
         self.level.contains.append(self)
         self.game = level.game
+
+        if generate:
+            self.roomGenerate
 
     # Room Update Loop
     def update(self):
