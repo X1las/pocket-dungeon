@@ -8,12 +8,12 @@ class Room:
     color = ROOM_DEFAULT_COLOR
     contains = []
 
-    def __init__(self, level, position: tuple, type: str = "DEFAULT", 
+    def __init__(self, level, position: tuple, type: str = "DEFAULT",
                  generate=True):
 
         self.level = level
-        self.position = (position[0]*ROOM_SIZE*TILE_SIZE+ROOM_SPACING*TILE_SIZE,
-                         position[1]*ROOM_SIZE*TILE_SIZE+ROOM_SPACING*TILE_SIZE)
+        self.position = (position[0]*self.size*ROOM_SPACING,
+                         position[1]*self.size*ROOM_SPACING)
         print(self.position)
         self.roomType = "DEFAULT"
         self.level.contains.append(self)
